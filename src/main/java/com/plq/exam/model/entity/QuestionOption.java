@@ -28,16 +28,13 @@ public class QuestionOption extends Model<QuestionOption> {
     private Integer questionId;
 
     /**
-     * 选项值
-     */
-    @TableField("option_value")
-    private String optionValue;
-
-    /**
      * 选项内容
      */
     @TableField("option_content")
-    private Double optionContent;
+    private String optionContent;
+
+    @TableField("is_answer")
+    private Integer isAnswer;
 
     @TableField("create_by")
     private String createBy;
@@ -68,18 +65,20 @@ public class QuestionOption extends Model<QuestionOption> {
     public void setQuestionId(Integer questionId) {
         this.questionId = questionId;
     }
-    public String getOptionValue() {
-        return optionValue;
-    }
 
-    public void setOptionValue(String optionValue) {
-        this.optionValue = optionValue;
-    }
-    public Double getOptionContent() {
+    public String getOptionContent() {
         return optionContent;
     }
 
-    public void setOptionContent(Double optionContent) {
+    public Integer getIsAnswer() {
+        return isAnswer;
+    }
+
+    public void setIsAnswer(Integer isAnswer) {
+        this.isAnswer = isAnswer;
+    }
+
+    public void setOptionContent(String optionContent) {
         this.optionContent = optionContent;
     }
     public String getCreateBy() {
@@ -128,7 +127,6 @@ public class QuestionOption extends Model<QuestionOption> {
         return "QuestionOption{" +
         "id=" + id +
         ", questionId=" + questionId +
-        ", optionValue=" + optionValue +
         ", optionContent=" + optionContent +
         "}";
     }

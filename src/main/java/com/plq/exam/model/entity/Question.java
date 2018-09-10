@@ -1,6 +1,8 @@
 package com.plq.exam.model.entity;
 
 import com.baomidou.mybatisplus.enums.IdType;
+
+import java.math.BigDecimal;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
@@ -37,7 +39,7 @@ public class Question extends Model<Question> {
      * 分值
      */
     @TableField("question_score")
-    private Double questionScore;
+    private BigDecimal questionScore;
 
     /**
      * 答案解析
@@ -81,11 +83,11 @@ public class Question extends Model<Question> {
     public void setQuestionContent(String questionContent) {
         this.questionContent = questionContent;
     }
-    public Double getQuestionScore() {
+    public BigDecimal getQuestionScore() {
         return questionScore;
     }
 
-    public void setQuestionScore(Double questionScore) {
+    public void setQuestionScore(BigDecimal questionScore) {
         this.questionScore = questionScore;
     }
     public String getAnswerAnalysis() {

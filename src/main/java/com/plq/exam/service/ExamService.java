@@ -11,4 +11,6 @@ public interface ExamService extends IService<Exam> {
     List<Map<String,Object>> listQuestionAndOption(Integer examId);
 
     void examineeSubmit(ExamineeExam examineeExam);
+
+    void insertExam(List<List<Object>> dataList, Integer examId);
 }

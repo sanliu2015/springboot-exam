@@ -15,4 +15,11 @@
         <result column="del_flag" property="delFlag" />
     </resultMap>
 
+    <select id="listOption" resultType="java.util.LinkedHashMap">
+        select a.id as optionId, a.question_id as questionId,a.option_content as `content`,a.is_answer as isAnswer
+        from exam_question_option a
+        inner join exam_question b on a.question_id=b.id
+        where b.exam_id=#{examId}
+    </select>
+
 </mapper>

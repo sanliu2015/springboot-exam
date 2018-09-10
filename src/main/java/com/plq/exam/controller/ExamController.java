@@ -1,5 +1,6 @@
 package com.plq.exam.controller;
 
+import com.plq.exam.common.exception.RRException;
 import com.plq.exam.common.utils.R;
 import com.plq.exam.model.dto.ExamineeLoginDto;
 import com.plq.exam.model.entity.Examinee;
@@ -40,6 +41,7 @@ public class ExamController {
         Examinee examinee = new Examinee();
         BeanUtils.copyProperties(examineeLoginDto, examinee);
         examineeService.insert(examinee);
+
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("examinee", examinee);
         List<Map<String, Object>> qustionList = examService.listQuestionAndOption(examineeLoginDto.getExamId());
@@ -52,6 +54,13 @@ public class ExamController {
     public R examineeSubmit(@RequestBody ExamineeExam examineeExam) {
         examService.examineeSubmit(examineeExam);
         examineeExam.setSubmitTime(new Date());
+        return R.ok();
+    }
+
+    @PostMapping("/exam/{examId}/initData")
+    @ResponseBody
+    public R init(@RequestBody List<List<Object>> dataList, @PathVariable Integer examId) {
+        examService.insertExam(dataList, examId);
         return R.ok();
     }
 
