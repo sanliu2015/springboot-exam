@@ -1,6 +1,6 @@
 package com.plq.exam.mapper;
 
-import com.plq.exam.model.entity.ExamineeList;
+import com.plq.exam.model.entity.ExamineeExam;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author plq
  * @since 2018-09-03
  */
-public interface ExamineeListMapper extends BaseMapper<ExamineeList> {
+public interface ExamineeExamMapper extends BaseMapper<ExamineeExam> {
 
 }

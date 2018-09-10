@@ -40,18 +40,6 @@ public class Question extends Model<Question> {
     private Double questionScore;
 
     /**
-     * 是否单选
-     */
-    @TableField("is_single_select")
-    private Integer isSingleSelect;
-
-    /**
-     * 答案
-     */
-    @TableField("question_answer")
-    private String questionAnswer;
-
-    /**
      * 答案解析
      */
     @TableField("answer_analysis")
@@ -99,20 +87,6 @@ public class Question extends Model<Question> {
 
     public void setQuestionScore(Double questionScore) {
         this.questionScore = questionScore;
-    }
-    public Integer getIsSingleSelect() {
-        return isSingleSelect;
-    }
-
-    public void setIsSingleSelect(Integer isSingleSelect) {
-        this.isSingleSelect = isSingleSelect;
-    }
-    public String getQuestionAnswer() {
-        return questionAnswer;
-    }
-
-    public void setQuestionAnswer(String questionAnswer) {
-        this.questionAnswer = questionAnswer;
     }
     public String getAnswerAnalysis() {
         return answerAnalysis;

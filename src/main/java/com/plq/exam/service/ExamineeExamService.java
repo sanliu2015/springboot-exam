@@ -1,7 +1,7 @@
 package com.plq.exam.service;
 
-import com.plq.exam.model.entity.ExamineeAns;
 import com.baomidou.mybatisplus.service.IService;
+import com.plq.exam.model.entity.ExamineeExam;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author plq
  * @since 2018-09-03
  */
-public interface ExamineeAnsService extends IService<ExamineeAns> {
+public interface ExamineeExamService extends IService<ExamineeExam> {
 
 }

@@ -16,16 +16,16 @@ import java.io.Serializable;
  * @author plq
  * @since 2018-09-03
  */
-@TableName("exam_examinee_ans")
-public class ExamineeAns extends Model<ExamineeAns> {
+@TableName("exam_examinee_exam")
+public class ExamineeExam extends Model<ExamineeExam> {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @TableField("question_id")
-    private Integer questionId;
+    @TableField("exam_id")
+    private Integer examId;
 
     /**
      * 考生id
@@ -34,9 +34,22 @@ public class ExamineeAns extends Model<ExamineeAns> {
     private Integer examineeId;
 
     /**
-     * 考生答案
+     * 提交状态
      */
-    private String answer;
+    @TableField("submit_status")
+    private String submitStatus;
+
+    /**
+     * 提交状态
+     */
+    @TableField("submit_by")
+    private String submitBy;
+
+    /**
+     * 提交时间
+     */
+    @TableField("submit_time")
+    private Date submitTime;
 
     @TableField("create_by")
     private String createBy;
@@ -60,12 +73,12 @@ public class ExamineeAns extends Model<ExamineeAns> {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getQuestionId() {
-        return questionId;
+    public Integer getExamId() {
+        return examId;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setExamId(Integer examId) {
+        this.examId = examId;
     }
     public Integer getExamineeId() {
         return examineeId;
@@ -74,12 +87,26 @@ public class ExamineeAns extends Model<ExamineeAns> {
     public void setExamineeId(Integer examineeId) {
         this.examineeId = examineeId;
     }
-    public String getAnswer() {
-        return answer;
+    public String getSubmitStatus() {
+        return submitStatus;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setSubmitStatus(String submitStatus) {
+        this.submitStatus = submitStatus;
+    }
+    public String getSubmitBy() {
+        return submitBy;
+    }
+
+    public void setSubmitBy(String submitBy) {
+        this.submitBy = submitBy;
+    }
+    public Date getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(Date submitTime) {
+        this.submitTime = submitTime;
     }
     public String getCreateBy() {
         return createBy;
@@ -124,11 +151,13 @@ public class ExamineeAns extends Model<ExamineeAns> {
 
     @Override
     public String toString() {
-        return "ExamineeAns{" +
+        return "ExamineeList{" +
         "id=" + id +
-        ", questionId=" + questionId +
+        ", examId=" + examId +
         ", examineeId=" + examineeId +
-        ", answer=" + answer +
+        ", submitStatus=" + submitStatus +
+        ", submitBy=" + submitBy +
+        ", submitTime=" + submitTime +
         "}";
     }
 }

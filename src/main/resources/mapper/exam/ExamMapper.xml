@@ -17,4 +17,14 @@
         <result column="del_flag" property="delFlag" />
     </resultMap>
 
+    <select id="listQuestion" resultType="java.util.LinkedHashMap">
+        select id as questionId, question_content as questionContext, question_score as questionScore
+        from exam_question where exam_id=#{examId}
+    </select>
+
+    <update id="examineeSubmit">
+        update exam_examinee_exam set score=#{score},submit_status='1',submit_time=#{submitTime}
+        where examinee_id=#{examineeId} and exam_id=#{examId} and submit_status='0'
+    </update>
+
 </mapper>

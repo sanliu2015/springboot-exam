@@ -6,6 +6,9 @@ import com.plq.exam.service.QuestionOptionService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  *  服务实现类
@@ -16,5 +19,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class QuestionOptionServiceImpl extends ServiceImpl<QuestionOptionMapper, QuestionOption> implements QuestionOptionService {
-
+    @Override
+    public List<Map<String, Object>> listOption(Integer examId) {
+        return this.baseMapper.listOption(examId);
+    }
 }
