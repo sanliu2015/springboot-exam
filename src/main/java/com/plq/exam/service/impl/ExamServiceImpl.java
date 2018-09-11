@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -37,10 +38,21 @@ public class ExamServiceImpl extends ServiceImpl<ExamMapper, Exam> implements Ex
         List<Map<String, Object>> questionList = questionService.listQuestion(examId);
         List<Map<String, Object>> qtOptionList = questionOptionService.listOption(examId);
         questionList.forEach(q -> {
-            List<Map<String, Object>> optionList = qtOptionList.stream()
+            List<Long> answers = new ArrayList<>();
+            List<Map<String, Object>> options = qtOptionList.stream()
                     .filter(m -> m.get("questionId").toString().equals(q.get("questionId").toString()))
                     .collect(Collectors.toList());
-            q.put("options", optionList);
+            options.forEach(obj -> {
+                if ((Integer)obj.get("isAnswer") == 1) {
+                    answers.add((Long)obj.get("optionId"));
+                }
+            });
+            q.put("options", options);
+            if (answers.size() == 1) {
+                q.put("answer", answers.get(0));
+            } else {
+                q.put("answer", answers);
+            }
         });
         return questionList;
     }

@@ -31,8 +31,9 @@ public class ExamController {
     private ExamineeService examineeService;
 
     @RequestMapping("/exam/{id}")
-    public String index(@PathVariable Integer id) {
-        return "exam/detail";
+    @ResponseBody
+    public R get(@PathVariable Integer id) {
+        return R.ok().put("result", examService.selectById(id));
     }
 
     @PostMapping("/loginByExaminee")
@@ -41,11 +42,10 @@ public class ExamController {
         Examinee examinee = new Examinee();
         BeanUtils.copyProperties(examineeLoginDto, examinee);
         examineeService.insert(examinee);
-
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("examinee", examinee);
-        List<Map<String, Object>> qustionList = examService.listQuestionAndOption(examineeLoginDto.getExamId());
-        resultMap.put("questions", qustionList);
+        List<Map<String, Object>> qustions = examService.listQuestionAndOption(examineeLoginDto.getExamId());
+        resultMap.put("questions", qustions);
         return R.ok().put("result", resultMap);
     }
 

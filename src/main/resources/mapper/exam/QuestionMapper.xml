@@ -3,7 +3,7 @@
 <mapper namespace="com.plq.exam.mapper.QuestionMapper">
 
     <select id="listQuestion" resultType="java.util.LinkedHashMap">
-        select id as questionId, question_content as questionContext, question_score as questionScore
+        select id as questionId, question_content as title, question_score as score
         from exam_question where exam_id=#{examId}
     </select>
 
